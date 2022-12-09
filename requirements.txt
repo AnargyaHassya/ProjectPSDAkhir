@@ -4,3 +4,4 @@ opencv-python-headless
 dlib-bin
 streamlit
 matplotlib==3.4.1
+imutils==0.5.4

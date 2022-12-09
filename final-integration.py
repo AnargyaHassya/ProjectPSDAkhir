@@ -153,8 +153,8 @@ while(True):
         cv2.drawContours(gray, [rightEyeHull], -1, eyeContourColor, 2)
         writeEyes(leftEye, rightEye, frame)
     if(avgEAR>close_thresh):
-        alert.stop()
-    cv2.imshow('Driver', gray)
+        # alert.stop()
+        cv2.imshow('Driver', gray)
     if(cv2.waitKey(1)==27):
         break
         
