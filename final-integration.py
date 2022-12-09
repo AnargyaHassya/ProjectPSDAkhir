@@ -5,7 +5,7 @@ import dlib
 import imutils
 from imutils import face_utils
 from matplotlib import pyplot as plt
-import vlc
+# import vlc
 import train as train
 import sys, webbrowser, datetime
 
@@ -67,7 +67,7 @@ def writeEyes(a, b, img):
 # open_avg = train.getAvg()
 # close_avg = train.getAvg()
 
-alert = vlc.MediaPlayer('focus.mp3')
+# alert = vlc.MediaPlayer('focus.mp3')
 
 frame_thresh_1 = 15
 frame_thresh_2 = 10
@@ -118,27 +118,27 @@ while(True):
             if(yawn_countdown and flag>=frame_thresh_3):
                 eyeContourColor = (147, 20, 255)
                 cv2.putText(gray, "Drowsy after yawn", (50,50), cv2.FONT_HERSHEY_COMPLEX, 1,(0,255,127),2)
-                alert.play()
+                # alert.play()
                 if(map_flag):
                     map_flag = 0
                     map_counter+=1
             elif(flag>=frame_thresh_2 and getFaceDirection(shape, size)<0):
                 eyeContourColor = (255, 0, 0)
                 cv2.putText(gray, "Drowsy (Body Posture)", (50,50), cv2.FONT_HERSHEY_COMPLEX, 1,(0,255,127),2)
-                alert.play()
+                # alert.play()
                 if(map_flag):
                     map_flag = 0
                     map_counter+=1
             elif(flag>=frame_thresh_1):
                 eyeContourColor = (0, 0, 255)
                 cv2.putText(gray, "Drowsy (Normal)", (50,50), cv2.FONT_HERSHEY_COMPLEX, 1,(0,255,127),2)
-                alert.play()
+                # alert.play()
                 if(map_flag):
                     map_flag = 0
                     map_counter+=1
         elif(avgEAR>close_thresh and flag):
             print("Flag reseted to 0")
-            alert.stop()
+            # alert.stop()
             yawn_countdown=0
             map_flag=1
             flag=0
@@ -146,7 +146,7 @@ while(True):
         if(map_counter>=3):
             map_flag=1
             map_counter=0
-            vlc.MediaPlayer('take_a_break.mp3').play()
+            # vlc.MediaPlayer('take_a_break.mp3').play()
             webbrowser.open("https://www.google.com/maps/search/hotels+or+motels+near+me")
 
         cv2.drawContours(gray, [leftEyeHull], -1, eyeContourColor, 2)

@@ -5,7 +5,7 @@ import dlib
 import imutils
 from imutils import face_utils
 from matplotlib import pyplot as plt
-import vlc
+# import vlc
 import train as train
 
 def euclideanDist(a, b):
@@ -27,7 +27,7 @@ def writeEyes(a, b, img):
 # open_avg = train.getAvg()
 # close_avg = train.getAvg()
 
-alert = vlc.MediaPlayer('alert-sound.mp3')
+# alert = vlc.MediaPlayer('alert-sound.mp3')
 frame_thresh = 15
 close_thresh = 0.3#(close_avg+open_avg)/2.0
 flag = 0
@@ -57,18 +57,18 @@ while(True):
         if(avgEAR<close_thresh):
             flag+=1
             print(flag)
-            if(flag>=frame_thresh):
-                alert.play()
+            # if(flag>=frame_thresh):
+                # alert.play()
         elif(avgEAR>close_thresh and flag):
             print("Flag reseted to 0")
-            alert.stop()
+            # alert.stop()
             flag=0
         cv2.drawContours(gray, [leftEyeHull], -1, (255, 255, 255), 1)
         cv2.drawContours(gray, [rightEyeHull], -1, (255, 255, 255), 1)
         writeEyes(leftEye, rightEye, frame)
     if(avgEAR>close_thresh):
-        alert.stop()
-    cv2.imshow('Driver', gray)
+        # alert.stop()
+        cv2.imshow('Driver', gray)
     if(cv2.waitKey(1)==27):
         break
         
